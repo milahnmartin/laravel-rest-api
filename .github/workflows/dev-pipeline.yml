@@ -29,7 +29,7 @@ jobs:
         run: vendor/bin/phpunit
 
   deploy-dev:
-    needs: laravel-tests
+    needs: unit-tests
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
