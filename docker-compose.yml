@@ -39,15 +39,14 @@ services:
         ports:
             - "3306:3306"
         environment:
-            MYSQL_USER: dev
-            MYSQL_DATABASE: dev
-            MYSQL_ROOT_PASSWORD: dexter
-            SERVICE_TAGS: dev
-            SERVICE_NAME: mysql
+            MYSQL_ROOT_PASSWORD: password
         volumes:
             - dbdata:/var/lib/mysql
         networks:
             - app-network
+        command:
+            - --default-authentication-plugin=caching_sha2_password
+            - --bind-address=0.0.0.0
 
 networks:
     app-network:
